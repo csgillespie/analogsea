@@ -64,7 +64,7 @@ as.url.domain_record <- function(x, ...) {
 #' # list domains, then get domain records
 #' (d <- domains()[[1]])
 #' (rec <- domain_records(d))
-#'
+#' (rec <- domain_records(d, query = list(per_page = 200)))
 #' # create a domain
 #' dom <- domain_create('tablesandchairsbunnies.info', '107.170.220.59')
 #' ## list domain records
@@ -82,7 +82,7 @@ as.url.domain_record <- function(x, ...) {
 #' }
 domain_records <- function(domain, ...) {
   domain <- as.domain(domain)
-  as.domain_record(do_GET(domain_record_url(domain$name)), domain)
+  as.domain_record(do_GET(domain_record_url(domain$name), ...), domain)
 }
 
 #' @export
